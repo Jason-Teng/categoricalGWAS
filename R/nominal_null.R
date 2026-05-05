@@ -160,7 +160,7 @@ fit_nominal_outer <- function(
   err <- 1e8
   iter <- 0
 
-  # start_time <- Sys.time()
+  start_time <- Sys.time()
 
   while ((iter < maxiter) & (err > minerr)) {
 
@@ -200,8 +200,8 @@ fit_nominal_outer <- function(
   ps <- myResult[[1]]
   rr <- myResult[[2]]
 
-  # end_time <- Sys.time()
-  # elapsed_time <- end_time - start_time
+  end_time <- Sys.time()
+  elapsed_time <- end_time - start_time
 
   # print(elapsed_time)
 
