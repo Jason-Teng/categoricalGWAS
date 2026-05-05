@@ -11,9 +11,6 @@ The package implements multiple methods under a consistent interface, allowing f
 ```r
 install.packages("remotes")
 remotes::install_github("Jason-Teng/categoricalGWAS")
-```
-
-```r
 library(categoricalGWAS)
 ```
 
