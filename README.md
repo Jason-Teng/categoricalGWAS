@@ -22,6 +22,23 @@ The package currently supports several GWAS testing strategies under a common in
 Some methods require a null model, while others can be run directly. When needed, `categoricalGWAS` fits the null model automatically unless a precomputed null model or variance component estimate is supplied.
 
 ---
+## Null-model variance component estimation
+
+For mixed-model GWAS, several marker-scanning methods require variance components to be estimated under the null model before testing markers.
+
+For nominal traits, `categoricalGWAS` currently supports two null-model variance-component strategies:
+
+| Null method | Description | Speed | Bias |
+|---|---|---:|---:|
+| `pseudo` | Pseudo-response based variance-component estimation | Faster | May be more approximate |
+| `laplace` | Laplace approximation for the nominal mixed model | Slower | Usually less biased |
+
+The Laplace method is computationally more expensive than the pseudo-response method, but it only needs to be fitted once under the null model. After the variance components are estimated, they can be reused across all markers in the genome-wide scan.
+
+This makes the Laplace approach especially useful when the goal is to obtain more accurate variance-component estimates before applying faster marker-scanning methods such as score, P3D, or pseudo-response based tests.
+
+
+---
 
 ## Installation
 
