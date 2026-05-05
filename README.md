@@ -84,6 +84,27 @@ res_nom$results$score
 ```
 
 ---
+## Using external variance component estimates
+
+If variance components have already been estimated, for example from a Laplace approximation or another null-model routine, they can be supplied directly when supported by the selected method.
+
+A typical structure is:
+
+```r
+res_nom <- categorical_gwas(
+  y = nominal,
+  zz = zz,
+  kk = kk,
+  trait_type = "nominal",
+  method = c("score", "psr"),
+  vc = vc
+)
+```
+
+This is useful when separating variance-component estimation from genome-wide marker testing.
+
+---
+
 
 ## Input Format
 
