@@ -117,7 +117,7 @@ iblup_ordinal <- function(par, y, x, kk, maxiter = 100, minerr = 1e-8) {
     }
 
     ps <- pe + lp
-    rr <- as.matrix(bdiag(pp))
+    rr <- as.matrix(Matrix::bdiag(pp))
 
     V <- h %*% kk %*% t(h) * par + rr
     Vi <- solve(V)
@@ -251,7 +251,7 @@ fit_ordinal_outer <- function(y,
 
     trace <- rbind(trace, c(iter, err, par))
   }
-  
+
   # ===== final reconstruction =====
   pseudo <- iblup_ordinal(
     par = par0,
@@ -355,7 +355,7 @@ fit_ordinal_null <- function(y,
 
   if (null_method == "pseudo") {
     message(">>> Start fitting ordinal null model (pseudo)")
-    
+
     fit_ordinal <- fit_ordinal_outer(
       y = Yfull,
       x = x0,
