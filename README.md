@@ -54,17 +54,16 @@ zz <- z[1:5, ]
 ## Ordinal GWAS
 
 ```r
-Y <- ordinal_make_Y(ordinal)
-
-res_ord <- ordinal_gwas(
-  y = Y,
+res_ord <- categorical_gwas(
+  y = ordinal,
   zz = zz,
   kk = kk,
+  trait_type = "ordinal",
   method = c("score", "psrsd")
 )
 
-res_ord$score
-res_ord$psrsd
+res_ord$results$score
+res_ord$results$psrsd
 ```
 
 ---
@@ -72,28 +71,15 @@ res_ord$psrsd
 ## Nominal GWAS
 
 ```r
-res_nom <- nominal_gwas(
+res_nom <- categorical_gwas(
   y = nominal,
   zz = zz,
   kk = kk,
-  method = c("score", "p3d", "psr")
+  trait_type = "nominal",
+  method = c("score", "psr")
 )
 
-res_nom$score
-```
-
----
-
-## Unified Interface
-
-```r
-res <- categorical_gwas(
-  y = ordinal,
-  zz = zz,
-  kk = kk,
-  trait_type = "ordinal",
-  method = c("score", "psrsd")
-)
+res_nom$results$score
 ```
 
 ---
@@ -110,7 +96,7 @@ res <- categorical_gwas(
   Factor vector
 
 * `ordinal`
-  Factor vector (converted internally using `ordinal_make_Y()`)
+  Factor vector
 
 ---
 
